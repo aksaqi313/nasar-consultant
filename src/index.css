@@ -1,0 +1,207 @@
+/* ─────────────────────────────────────────────────────────────────
+   NASAR CONSULTANT — Design System
+   Global styles, design tokens, and reusable component classes
+   ───────────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base Reset & Globals ──────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply font-sans text-navy-800 bg-white;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading leading-tight;
+  }
+
+  img, video {
+    max-width: 100%;
+    display: block;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  /* Focus-visible ring for accessibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-gold ring-offset-2;
+  }
+}
+
+/* ── Component Utilities ───────────────────────────────────────── */
+@layer components {
+
+  /* ── Layout ─────────────────────────────────────────────────── */
+  .container-custom {
+    @apply w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12;
+  }
+
+  .section-padding {
+    @apply py-20 lg:py-28;
+  }
+
+  /* ── Typography ─────────────────────────────────────────────── */
+  .section-label {
+    @apply text-gold font-semibold text-xs tracking-[0.2em] uppercase;
+  }
+
+  .section-title {
+    @apply font-heading text-navy-800 text-3xl md:text-4xl lg:text-5xl font-bold leading-tight;
+  }
+
+  .section-subtitle {
+    @apply text-gray-500 text-base md:text-lg leading-relaxed;
+  }
+
+  /* ── Gold Divider ────────────────────────────────────────────── */
+  .gold-divider {
+    @apply w-14 h-1 bg-gold mt-4;
+  }
+
+  /* ── Buttons ─────────────────────────────────────────────────── */
+  .btn-base {
+    @apply inline-flex items-center justify-center gap-2 font-semibold text-sm
+           px-7 py-3.5 transition-all duration-300 rounded-none;
+  }
+
+  .btn-primary {
+    @apply btn-base bg-gold text-navy-900 hover:bg-gold-400 shadow-gold/20 shadow-md
+           hover:shadow-gold/40 hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply btn-base border-2 border-white/30 text-white hover:border-white hover:bg-white/10
+           backdrop-blur-sm;
+  }
+
+  .btn-navy {
+    @apply btn-base bg-navy-800 text-white hover:bg-navy-900
+           shadow-navy/30 shadow-md hover:shadow-navy/50 hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  .btn-outline-navy {
+    @apply btn-base border-2 border-navy-800 text-navy-800
+           hover:bg-navy-800 hover:text-white;
+  }
+
+  /* ── Cards ───────────────────────────────────────────────────── */
+  .card {
+    @apply bg-white border border-gray-100 shadow-card hover:shadow-card-hover
+           transition-all duration-300;
+  }
+
+  .card-gold-accent {
+    @apply bg-white border border-gray-100 border-l-4 border-l-gold
+           shadow-card hover:shadow-card-hover transition-all duration-300;
+  }
+
+  /* ── Nav ─────────────────────────────────────────────────────── */
+  .nav-link {
+    @apply text-white/80 hover:text-white font-medium text-sm
+           tracking-wide transition-colors duration-200;
+  }
+
+  .nav-link-active {
+    @apply text-gold;
+  }
+
+  /* ── Badge ───────────────────────────────────────────────────── */
+  .badge-gold {
+    @apply bg-gold/10 text-gold-600 text-xs font-semibold
+           px-3 py-1 tracking-wide uppercase;
+  }
+
+  /* ── Glass Effects ───────────────────────────────────────────── */
+  .glass-white {
+    @apply bg-white/10 border border-white/10 backdrop-blur-sm;
+  }
+
+  /* ── Gradient Backgrounds ────────────────────────────────────── */
+  .bg-gradient-navy {
+    background: linear-gradient(135deg, #172448 0%, #1e3163 50%, #253f7a 100%);
+  }
+
+  .bg-gold-pattern {
+    background: linear-gradient(135deg, #C9A84C 0%, #d9b55a 50%, #C9A84C 100%);
+  }
+
+  /* ── Text Gradients ─────────────────────────────────────────── */
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #C9A84C 0%, #e8c96e 50%, #C9A84C 100%);
+  }
+
+  /* ── Animations ─────────────────────────────────────────────── */
+  .animate-fade-in {
+    animation: fade-in 0.7s ease both;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.7s ease both;
+  }
+
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+}
+
+/* ── Keyframes ─────────────────────────────────────────────────── */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ── Scrollbar Styling ─────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f0f4fb;
+}
+::-webkit-scrollbar-thumb {
+  background: #C9A84C;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a8873a;
+}
+
+/* ── Selection ─────────────────────────────────────────────────── */
+::selection {
+  background: rgba(201, 168, 76, 0.25);
+  color: #172448;
+}
